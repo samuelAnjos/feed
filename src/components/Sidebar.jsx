@@ -12,7 +12,7 @@ export function Sidebar(){
             src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D&w=500&q=60" />
 
             <div className={styles.profile}>
-                <img  className={styles.avatar} src="https://github.com/samuelAnjos.png" alt="" />
+                <Avatar src="https://github.com/samuelAnjos.png" />
                 <strong>Samuel Anjos</strong>
                 <span>Developer</span>
             </div>
