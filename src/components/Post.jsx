@@ -23,7 +23,7 @@ export function Post ({author, publishedAt, content}){
         addSuffix: true,
     })
 
-
+    const isNewCommentEmpty = setNewCommentText.length === 0
 
     function handleCreateNewComment(){
         event.preventDefault()
@@ -42,6 +42,16 @@ export function Post ({author, publishedAt, content}){
         })
 
         setComments(commentWithoutDeleteOne)
+    }
+
+
+    function handleNewCommentChange(){
+        event.target.setCustomValidity();
+        setNewCommentText(event.target.value)
+    }
+
+    function handleNewCommentInvalid(){
+        setNewCommentText(event.target.value) 
     }
 
     return (
@@ -76,13 +86,17 @@ export function Post ({author, publishedAt, content}){
                 <strong>Deixe seu comentário</strong>
 
                 <textarea
+                    name="comment"
                     placeholder='Deixe seu comentário'
                     value={handleCreateNewComment}
+                    onChange={handleNewCommentChange}
+                    onInvalid={handleNewCommentInvalid}
+                    required
                 />
 
                 <footer>
 
-                <button type='submit'>Comment</button>
+                <button type='submit' disabled={isNewCommentEmpty}>Comment</button>
                 </footer>
             </form>
 

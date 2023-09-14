@@ -1,8 +1,22 @@
 import { ThumbsUp } from 'phosphor-react'
 import styles from './Comment.module.css'
 import { Avatar } from './Avatar'
+import { useState } from 'react'
 
 export function Comment({content}){
+
+    const [likeCount, setLikeCount] = useState(0);
+
+    function handleDeleteComent(){
+        onDeleteComment(content);
+    }
+
+    function handleLikeComent(){
+        setLikeCount((state)=> {
+            return state + 1
+        });
+    }
+
     return (
         <div className={styles.comment}>
             <Avatar hasBorder={false} src="https://github.com/samuelAnjos.png" alt="" />
@@ -24,9 +38,9 @@ export function Comment({content}){
                 </div>
 
                 <footer>
-                    <button>
+                    <button> onClick={handleLikeComent}
                         <ThumbsUp />
-                        Aplaudir <span>20</span>
+                        Aplaudir <span>{likeCount}</span>
                     </button>
                 </footer>
             </div>
